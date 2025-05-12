@@ -1,0 +1,11 @@
+.URLButton .block-editor-url-input{
+    width: 230px !important;
+    overflow: hidden;
+}
+
+@media (min-width: 600px) {
+    .block-editor-url-input{
+        min-width: 230px;
+        width: auto;
+    }
+}
