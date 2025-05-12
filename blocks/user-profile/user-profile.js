@@ -208,6 +208,10 @@
                                     el(Button, {
                                         onClick: () => removeRepeaterItem(index),
                                         isDestructive: true,
+                                        style:{
+                                            border: '1px solid #0ff',
+                                            margin: '10px'
+                                        }
                                     }, 'Remove')
                                 ])
                             )))

@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    $('.mp-hero-slider').slick({
+    $('.mp-testimonial-block').slick({
         autoplay: true,
         autoplaySpeed: 5000,
         dots: true,

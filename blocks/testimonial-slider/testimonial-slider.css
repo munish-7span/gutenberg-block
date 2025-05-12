@@ -1,0 +1,26 @@
+/* Slide Remove Button in the Editor */
+.remove-item{
+    border: 1px solid #f00;
+    background-color: #f00;
+    color:#fff !important;
+    border-radius: 2px;
+    margin: 20px 0px;
+}
+.mp-testimonial-block{
+    padding:20px;
+    margin:auto;
+}
+
+
+.mp-testimonial-block .testimonial_wrapper{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.mp-testimonial-block .testimonial_wrapper .testimonial-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width:500px;
+}

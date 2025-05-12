@@ -207,7 +207,7 @@
         return (
             wp.element.createElement('div', { className: 'mp-hero-slider',
                 style: {
-                    overflow: 'hidden',
+                    // overflow: 'hidden',
                 }
              },
                 repeaterItems.map((item, index) =>

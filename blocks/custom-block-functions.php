@@ -32,6 +32,15 @@ function my_custom_block_enqueue() {
         true
     );
 
+    // Add testimonial Block
+    wp_enqueue_script(
+        '', // Add handler
+        get_stylesheet_directory_uri() . '/blocks/testimonial-slider/testimonial-slider.js', // Place this file in your theme root
+        ['wp-blocks', 'wp-element', 'wp-editor'], // Dependencies from WP
+        false,
+        true
+    );
+
     // Add block to theme using below code
     // wp_enqueue_script(
     //     '', // Add handler
@@ -45,22 +54,30 @@ add_action('enqueue_block_editor_assets', 'my_custom_block_enqueue');
 
 // Enqueue CSS File the particular block
 function enqueue_custom_block_assets() {
+    wp_enqueue_style(
+        'slick',
+        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css',
+        array(),
+        '1.9.0',
+    );
+    
+    wp_enqueue_style(
+        'slick-theme',
+        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css',
+        array(),
+        '1.9.0',
+    );
+
+    wp_enqueue_script(
+        'slick-min',
+        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js', // JS file path
+        array('jquery'),
+        '1.9.0',
+        true
+    );
+
     // Frontend + Editor (shared styles)
     if (has_block('custom/mp-hero-slider')) {
-        
-        wp_enqueue_style(
-            'hs-slick',
-            'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css',
-            array(),
-            '1.9.0',
-        );
-        
-        wp_enqueue_style(
-            'hs-slick-theme',
-            'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css',
-            array(),
-            '1.9.0',
-        );
 
         wp_enqueue_style(
             'mp-hero-slider-style',
@@ -69,14 +86,7 @@ function enqueue_custom_block_assets() {
             filemtime(get_stylesheet_directory() . '/blocks/Hero Slider/hero-slider-block.css')
         );
 
-        wp_enqueue_script(
-            'hs-slick-min',
-            'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js', // JS file path
-            array('jquery'),
-            '1.9.0',
-            true
-        );
-
+        
         wp_enqueue_script(
             'hs-hero-slider-init',
             get_stylesheet_directory_uri() . '/blocks/Hero Slider/hero-slider-init.js', // JS file path
@@ -102,6 +112,22 @@ function enqueue_custom_block_assets() {
             get_stylesheet_directory_uri() . '/blocks/marquee-slider/marquee-slider.css',
             array(),
             filemtime(get_stylesheet_directory() . '/blocks/marquee-slider/marquee-slider.css')
+        );
+    }
+
+    if (has_block('custom/mp-testimonial-block')) {
+        wp_enqueue_style(
+            'mp-testimonial-block-style',
+            get_stylesheet_directory_uri() . '/blocks/testimonial-slider/testimonial-slider.css',
+            array(),
+            filemtime(get_stylesheet_directory() . '/blocks/testimonial-slider/testimonial-slider.css')
+        );
+         wp_enqueue_script(
+            'hs-testimonial-slider-init',
+            get_stylesheet_directory_uri() . '/blocks/testimonial-slider/testimonial-slider-init.js', // JS file path
+            array('jquery'), // Dependencies (jquery and slick carousel)
+            filemtime(get_stylesheet_directory() . '/blocks/testimonial-slider/testimonial-slider-init.js'), // Version from file modification timestamp
+            true // Load the script in the footer
         );
     }
 
